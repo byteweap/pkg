@@ -1,9 +1,10 @@
 package values
 
 import (
-	"encoding/json"
 	"strconv"
 	"strings"
+
+	"github.com/bytedance/sonic"
 )
 
 // Value 值类型
@@ -22,7 +23,7 @@ type Value interface{}
 // NewValueMapArray 返回 ValueＭap 数组
 func NewValueMapArray(data []byte) ([]ValueMap, error) {
 	var values []interface{}
-	err := json.Unmarshal(data, &values)
+	err := sonic.Unmarshal(data, &values)
 	if err != nil {
 		return nil, err
 	}
@@ -39,7 +40,7 @@ type ValueMap map[string]interface{}
 // NewValuesFromJSON 创建新数据
 func NewValuesFromJSON(data []byte) (ValueMap, error) {
 	var vm ValueMap
-	err := json.Unmarshal(data, &vm)
+	err := sonic.Unmarshal(data, &vm)
 	return vm, err
 }
 
@@ -71,10 +72,10 @@ func (vm ValueMap) GetString(name string) string {
 	case string:
 		return strings.TrimSpace(value.(string))
 	case []interface{}:
-		data, _ := json.Marshal(value)
+		data, _ := sonic.Marshal(value)
 		return string(data)
 	case interface{}:
-		data, _ := json.Marshal(value)
+		data, _ := sonic.Marshal(value)
 		return string(data)
 	}
 	return ""
@@ -147,19 +148,19 @@ func (vm ValueMap) GetIntArray(key string) []int {
 		}
 		return ret
 	case []interface{}:
-		bs, err := json.Marshal(v)
+		bs, err := sonic.Marshal(v)
 		if err != nil {
 			return []int{}
 		}
 		arr := make([]int, 0)
-		err = json.Unmarshal(bs, &arr)
+		err = sonic.Unmarshal(bs, &arr)
 		if err != nil {
 			return []int{}
 		}
 		return arr
 	case string:
 		ret := make([]int, 0)
-		_ = json.Unmarshal([]byte(v), &ret)
+		_ = sonic.Unmarshal([]byte(v), &ret)
 		return ret
 	default:
 		return []int{}
@@ -204,10 +205,11 @@ func (vm ValueMap) GetBool(name string) bool {
 }
 
 // // SetString 设置数据
-// func (f Values) SetString(name, value string) {
-// 	f[name] = value
-// }
+//
+//	func (f Values) SetString(name, value string) {
+//		f[name] = value
+//	}
 func (vm ValueMap) ToJSON() []byte {
-	ret, _ := json.MarshalIndent(vm, "", "  ")
+	ret, _ := sonic.Marshal(vm)
 	return ret
 }

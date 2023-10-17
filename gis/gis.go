@@ -1,9 +1,10 @@
 package gis
 
 import (
-	"encoding/json"
-	"github.com/violin8/pkg/cast"
 	"math"
+
+	"github.com/bytedance/sonic"
+	"github.com/violin8/pkg/cast"
 )
 
 type Location struct {
@@ -13,7 +14,7 @@ type Location struct {
 
 func NewLocation(locationStr string) Location {
 	l := Location{}
-	_ = json.Unmarshal([]byte(locationStr), &l)
+	_ = sonic.Unmarshal([]byte(locationStr), &l)
 	return l
 }
 
