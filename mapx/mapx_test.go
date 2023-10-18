@@ -6,12 +6,24 @@ import (
 
 func TestMapx(t *testing.T) {
 
-	// string - int
-	// mint := New[string, int]()
-	// mint.Set("name", 1)
-	// t.Log(mint.Get("name"))
-	//
+	km := New[string, int](false)
+	v := km.Get("foo")
 
-	a := make(KMap[string], 0)
-	a["ass"] = 7
+	t.Logf("v: %v", v)
+}
+
+func BenchmarkSafeMapx(b *testing.B) {
+	km := New[string, int](true)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		km.Get("foo")
+	}
+}
+
+func BenchmarkUnsafeMapx(b *testing.B) {
+	km := New[string, int](false)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		km.Get("foo")
+	}
 }
