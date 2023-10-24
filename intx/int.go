@@ -12,18 +12,6 @@ func Contains(arr []int, s int) bool {
 	return false
 }
 
-// RmDump 去重
-func RmDump(arr []int) []int {
-	result := make([]int, 0)
-
-	for _, s := range arr {
-		if !Contains(result, s) {
-			result = append(result, s)
-		}
-	}
-	return result
-}
-
 // SumInt 求和
 func SumInt(arr []int) int {
 
