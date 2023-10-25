@@ -1,10 +1,11 @@
 package network
 
 import (
-	"github.com/violin8/pkg/logs"
 	"net"
 	"sync"
 	"time"
+
+	"github.com/byteweap/pkg/logs"
 )
 
 type TCPServer struct {

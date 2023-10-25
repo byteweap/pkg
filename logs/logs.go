@@ -2,7 +2,6 @@ package logs
 
 import (
 	"fmt"
-	"github.com/violin8/pkg/filex"
 	"io"
 	"os"
 	"path"
@@ -10,6 +9,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/byteweap/pkg/filex"
 	"github.com/rs/zerolog"
 )
 

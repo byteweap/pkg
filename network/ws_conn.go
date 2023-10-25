@@ -2,10 +2,10 @@ package network
 
 import (
 	"errors"
-	"github.com/violin8/pkg/logs"
 	"net"
 	"sync"
 
+	"github.com/byteweap/pkg/logs"
 	"github.com/gorilla/websocket"
 )
 

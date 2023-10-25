@@ -2,7 +2,6 @@ package network
 
 import (
 	"fmt"
-	"github.com/violin8/pkg/logs"
 	"net"
 	"net/http"
 	"os"
@@ -10,6 +9,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/byteweap/pkg/logs"
 	"github.com/gorilla/websocket"
 )
 

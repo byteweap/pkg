@@ -1,4 +1,4 @@
-module github.com/violin8/pkg
+module github.com/byteweap/pkg
 
 go 1.18
 

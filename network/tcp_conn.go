@@ -1,9 +1,10 @@
 package network
 
 import (
-	"github.com/violin8/pkg/logs"
 	"net"
 	"sync"
+
+	"github.com/byteweap/pkg/logs"
 )
 
 type ConnSet map[net.Conn]struct{}

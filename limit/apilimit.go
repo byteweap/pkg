@@ -2,10 +2,10 @@ package limit
 
 import (
 	"fmt"
-	"github.com/violin8/pkg/logs"
 	"time"
 
-	"github.com/violin8/pkg/golang"
+	"github.com/byteweap/pkg/golang"
+	"github.com/byteweap/pkg/logs"
 )
 
 // ApiLimiter Api接口调用限速器

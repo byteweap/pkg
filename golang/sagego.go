@@ -1,8 +1,9 @@
 package golang
 
 import (
-	"github.com/violin8/pkg/logs"
 	"runtime"
+
+	"github.com/byteweap/pkg/logs"
 )
 
 //// SafeGo go函数(可捕获异常)

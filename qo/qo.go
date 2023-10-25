@@ -2,8 +2,9 @@ package qo
 
 import (
 	"container/list"
-	"github.com/violin8/pkg/golang"
 	"sync"
+
+	"github.com/byteweap/pkg/golang"
 )
 
 // Qo 线性 gorouting 队列

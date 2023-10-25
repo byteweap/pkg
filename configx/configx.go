@@ -1,9 +1,9 @@
 package configx
 
 import (
+	"github.com/byteweap/pkg/logs"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
-	"github.com/violin8/pkg/logs"
 )
 
 // LoadConfigFromFile 加载配置文件,并解析到结构体
