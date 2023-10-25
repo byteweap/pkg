@@ -58,7 +58,7 @@ func (m *safeMapx[Key, Value]) Keys() []Key {
 	m.mux.RLock()
 	defer m.mux.RUnlock()
 
-	var keys []Key
+	keys := make([]Key, 0, len(m.m))
 	for k := range m.m {
 		keys = append(keys, k)
 	}

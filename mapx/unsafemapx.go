@@ -37,7 +37,7 @@ func (m unsafeMapx[Key, Value]) Range(fn func(Key, Value)) {
 
 // 获取所有key
 func (m unsafeMapx[Key, Value]) Keys() []Key {
-	var keys []Key
+	keys := make([]Key, 0, len(m))
 	for k := range m {
 		keys = append(keys, k)
 	}
