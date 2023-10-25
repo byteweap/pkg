@@ -43,3 +43,10 @@ func (m unsafeMapx[Key, Value]) Keys() []Key {
 	}
 	return keys
 }
+
+// 是否存在
+func (m unsafeMapx[Key, Value]) IsExist(key Key) bool {
+
+	_, ok := m[key]
+	return ok
+}

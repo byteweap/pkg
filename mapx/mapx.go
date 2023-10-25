@@ -9,6 +9,7 @@ type Mapx[Key comparable, Value any] interface {
 	Len() int                          // 长度
 	Range(fn func(key Key, val Value)) // 遍历
 	Keys() []Key                       // 获取所有key
+	IsExist(key Key) bool              // 是否存在
 }
 
 // New

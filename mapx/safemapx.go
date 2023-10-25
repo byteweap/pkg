@@ -64,3 +64,12 @@ func (m *safeMapx[Key, Value]) Keys() []Key {
 	}
 	return keys
 }
+
+// 是否存在
+func (m *safeMapx[Key, Value]) IsExist(key Key) bool {
+	m.mux.RLock()
+	defer m.mux.RUnlock()
+
+	_, ok := m.m[key]
+	return ok
+}
