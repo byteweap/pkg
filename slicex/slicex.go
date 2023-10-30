@@ -43,10 +43,21 @@ func (sx *Slicex[T]) Pop(beginIndex, count int) []T {
 	return data
 }
 
-func (sx *Slicex[T]) Get(beginIndex, count int) {
+func (sx *Slicex[T]) Get(beginIndex, count int) []T {
 	sx.mux.RLock()
 	defer sx.mux.RUnlock()
 
+	if count == 0 {
+		return []T{}
+	}
+	if beginIndex >= len(sx.data) {
+		return []T{}
+	}
+	endIndex := beginIndex + count
+	if endIndex >= len(sx.data) {
+		return []T{}
+	}
+	return sx.data[beginIndex:endIndex]
 }
 
 func (sx *Slicex[T]) Len() int {

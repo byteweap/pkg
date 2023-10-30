@@ -66,7 +66,6 @@ func Init(level, pathname string, interval int) {
 func newOutput(pathname string) io.Writer {
 
 	// 1. 默认标准输出
-	wr := os.Stdout
 	// 2. 文件夹设置不为空时,写入文件
 	if pathname != "" {
 		now := time.Now().Format("2006-01-02_15:04:05")
@@ -81,12 +80,12 @@ func newOutput(pathname string) io.Writer {
 		}
 		file, err := os.Create(path.Join(pathname, filename))
 		if err == nil {
-			wr = file
+			return file
 		} else {
 			fmt.Println("create file[", filename, "] error:", err.Error())
 		}
 	}
-	return wr
+	return os.Stdout
 }
 
 // Debug 适配旧的logs打印
