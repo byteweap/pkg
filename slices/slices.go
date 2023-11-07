@@ -2,7 +2,7 @@ package slices
 
 import "math/rand"
 
-// 去重
+// Uniq 去重
 func Uniq[T comparable](collection []T) []T {
 
 	result := make([]T, 0, len(collection))
@@ -18,7 +18,7 @@ func Uniq[T comparable](collection []T) []T {
 	return result
 }
 
-// 去重
+// UniqBy 去重
 // 通过uniqKey函数指定唯一条件
 func UniqBy[T any, U comparable](collection []T, uniqKey func(iterm T) U) []T {
 	result := make([]T, 0, len(collection))
@@ -35,7 +35,7 @@ func UniqBy[T any, U comparable](collection []T, uniqKey func(iterm T) U) []T {
 	return result
 }
 
-// 过滤器
+// Filter 过滤器
 func Filter[T any](collection []T, okFunc func(index int, value T) bool) []T {
 
 	result := make([]T, 0, len(collection))
@@ -48,7 +48,7 @@ func Filter[T any](collection []T, okFunc func(index int, value T) bool) []T {
 	return result
 }
 
-// 判断v是否在collection中
+// In 判断v是否在collection中
 // T 需要是可比较的类型,指针类型不适用
 func In[T comparable](v T, collection []T) bool {
 
@@ -60,7 +60,7 @@ func In[T comparable](v T, collection []T) bool {
 	return false
 }
 
-// 判断v是否在collection中
+// InBy 判断v是否在collection中
 // equal函数为判定条件, src是v, target是collection[i]
 func InBy[T any](v T, collection []T, equal func(src, target T) bool) bool {
 
@@ -72,14 +72,14 @@ func InBy[T any](v T, collection []T, equal func(src, target T) bool) bool {
 	return false
 }
 
-// 遍历
+// ForEach 遍历
 func ForEach[T any](collection []T, anything func(index int, value T)) {
 	for index, value := range collection {
 		anything(index, value)
 	}
 }
 
-// 均分
+// Chunk 均分
 // collection被均分为长度为size的组，如果不能均分，则最后一组为剩余元素
 func Chunk[T any](collection []T, size int) [][]T {
 	if size <= 0 {
@@ -104,7 +104,7 @@ func Chunk[T any](collection []T, size int) [][]T {
 	return result
 }
 
-// 洗牌
+// Shuffle 洗牌
 func Shuffle[T any](collection []T) []T {
 
 	rand.Shuffle(len(collection), func(i, j int) {
@@ -113,7 +113,7 @@ func Shuffle[T any](collection []T) []T {
 	return collection
 }
 
-// 元素个数
+// Count 元素个数
 func Count[T comparable](collection []T, value T) (count int) {
 
 	for _, item := range collection {
@@ -124,7 +124,7 @@ func Count[T comparable](collection []T, value T) (count int) {
 	return
 }
 
-// 元素个数
+// CountBy 元素个数
 // 接收is函数为判定条件, true计数,false不计数
 func CountBy[T any](collection []T, okFunc func(item T) bool) (count int) {
 
