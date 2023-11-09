@@ -135,3 +135,15 @@ func CountBy[T any](collection []T, okFunc func(item T) bool) (count int) {
 	}
 	return
 }
+
+// RemoveAll 删除所有=value的元素
+func RemoveAll[T comparable](collection []T, value T) []T {
+
+	result := make([]T, 0, len(collection))
+	for _, item := range collection {
+		if item != value {
+			result = append(result, item)
+		}
+	}
+	return result
+}

@@ -7,49 +7,6 @@ import (
 	"time"
 )
 
-// SortIntArrAsc 升序排序数组
-func SortIntArrAsc(array []int) []int {
-	for i := 0; i < len(array); i++ {
-		for j := i + 1; j < len(array); j++ {
-			if array[j] < array[i] {
-				// tmp := array[i]
-				// array[i] = array[j]
-				// array[j] = tmp
-				array[i], array[j] = array[j], array[i]
-			}
-		}
-	}
-	return array
-}
-
-// EqualArr 判断两个数组是否完全相同
-func EqualArr(_arr1 []int, _arr2 []int) bool {
-
-	arr1 := SortIntArrAsc(_arr1)
-	arr2 := SortIntArrAsc(_arr2)
-
-	if len(arr1) != len(arr2) {
-		return false
-	}
-	for i := 0; i < len(arr1); i++ {
-		if arr1[i] != arr2[i] {
-			return false
-		}
-	}
-	return true
-}
-
-// RemoveElement 数组删除指定元素,相同的全部删除
-func RemoveElement(_array []int, _value int) []int {
-	tmpArr := make([]int, 0)
-	for _, v := range _array {
-		if v != _value {
-			tmpArr = append(tmpArr, v)
-		}
-	}
-	return tmpArr
-}
-
 func RemoveStrElement(_array []string, _value string) []string {
 	tmpArr := make([]string, 0)
 	isRemove := false
@@ -63,33 +20,6 @@ func RemoveStrElement(_array []string, _value string) []string {
 				tmpArr = append(tmpArr, v)
 			}
 		}
-	}
-	return tmpArr
-}
-
-// RandArr 乱序一个数组
-func RandArr(_array []int) []int {
-	tmpArr := make([]int, 0)
-	random := rand.New(rand.NewSource(time.Now().UnixNano()))
-	length := len(_array)
-	for i := 0; i < length; i++ {
-		ranIndex := random.Intn(len(_array))
-		val := _array[ranIndex]
-		tmpArr = append(tmpArr, val)
-		_array = RemoveElement(_array, val)
-	}
-	return tmpArr
-}
-
-func RandStrArr(_array []string) []string {
-	tmpArr := make([]string, 0)
-	random := rand.New(rand.NewSource(time.Now().UnixNano()))
-	length := len(_array)
-	for i := 0; i < length; i++ {
-		ranIndex := random.Intn(len(_array))
-		val := _array[ranIndex]
-		tmpArr = append(tmpArr, val)
-		_array = RemoveStrElement(_array, val)
 	}
 	return tmpArr
 }
@@ -154,16 +84,6 @@ func GetMaxElement(_array []int) int {
 		}
 	}
 	return _data
-}
-
-// HasElement 判断数组中是否含有指定元素
-func HasElement(_array []int, _element int) bool {
-	for _, v := range _array {
-		if v == _element {
-			return true
-		}
-	}
-	return false
 }
 
 // GetZuheResult 求排列组合 组合算法(从n个中取出m个数)---------------------------------------------------------
