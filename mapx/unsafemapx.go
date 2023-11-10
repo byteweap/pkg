@@ -1,41 +1,41 @@
 package mapx
 
-// 非安全泛型map
+// generic type map which is not thread safe.
 type unsafeMapx[Key comparable, Value any] map[Key]Value
 
-// 初始化
+// newSafeMapx creates a new instance of unsafeMapx.
 func newUnSafeMapx[Key comparable, Value any]() unsafeMapx[Key, Value] {
 	return make(unsafeMapx[Key, Value])
 }
 
-// 取值
+// Get get value by key.
 func (m unsafeMapx[Key, Value]) Get(key Key) Value {
 	return m[key]
 }
 
-// 赋值
+// Set assigns a value to the key.
 func (m unsafeMapx[Key, Value]) Set(key Key, value Value) {
 	m[key] = value
 }
 
-// 删除
+// Delete delete the value by key.
 func (m unsafeMapx[Key, Value]) Delete(key Key) {
 	delete(m, key)
 }
 
-// 长度
+// Len returns the length of the safeMapx.
 func (m unsafeMapx[Key, Value]) Len() int {
 	return len(m)
 }
 
-// 遍历
+// Range iterates over the map and calls the given function for each key-value pair.
 func (m unsafeMapx[Key, Value]) Range(fn func(Key, Value)) {
 	for k, v := range m {
 		fn(k, v)
 	}
 }
 
-// 获取所有key
+// Keys returns a slice of keys in the safeMapx[Key, Value].
 func (m unsafeMapx[Key, Value]) Keys() []Key {
 	keys := make([]Key, 0, len(m))
 	for k := range m {
@@ -44,7 +44,7 @@ func (m unsafeMapx[Key, Value]) Keys() []Key {
 	return keys
 }
 
-// 是否存在
+// IsExist checks if the key exists in the safeMapx.
 func (m unsafeMapx[Key, Value]) IsExist(key Key) bool {
 
 	_, ok := m[key]

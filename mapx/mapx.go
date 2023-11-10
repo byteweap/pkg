@@ -1,20 +1,21 @@
 package mapx
 
 // Mapx
-// New()入参threadSafe指定是否为线程安全
+// generic type map which is thread safe or not
 type Mapx[Key comparable, Value any] interface {
-	Get(key Key) Value                 // 取值
-	Set(key Key, value Value)          // 赋值
-	Delete(key Key)                    // 删除
-	Len() int                          // 长度
-	Range(fn func(key Key, val Value)) // 遍历
-	Keys() []Key                       // 获取所有key
-	IsExist(key Key) bool              // 是否存在
+	Get(key Key) Value                 // Get value by key.
+	Set(key Key, value Value)          // Set value to key.
+	Delete(key Key)                    // Delete by key.
+	Len() int                          // Get length.
+	Range(fn func(key Key, val Value)) // Range.
+	Keys() []Key                       // Get keys.
+	IsExist(key Key) bool              // Check if key exists.
 }
 
-// New
-// 泛型key和value
-// threadSafe: 是否线程安全
+// New[Key comparable, Value any](threadSafe bool) returns a new Mapx[Key, Value] based on the value of threadSafe.
+//
+// threadSafe: a boolean indicating whether the mapx should be thread safe or not.
+// Returns: an instance of Mapx[Key, Value], either a thread safe or non-thread safe depending on the value of threadSafe.
 func New[Key comparable, Value any](threadSafe bool) Mapx[Key, Value] {
 
 	if threadSafe {

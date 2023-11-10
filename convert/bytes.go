@@ -5,17 +5,13 @@ import (
 	"unsafe"
 )
 
-// 高性能bytes-string转换包
-
-// Bytes2String
-// converts byte slice to a string without memory allocation.
+// Bytes2String converts byte slice to a string without memory allocation.
 func Bytes2String(b []byte) string {
 	/* #nosec G103 */
 	return *(*string)(unsafe.Pointer(&b))
 }
 
-// String2Bytes
-// converts string to a byte slice without memory allocation.
+// String2Bytes converts string to a byte slice without memory allocation.
 func String2Bytes(s string) (b []byte) {
 	/* #nosec G103 */
 	bh := (*reflect.SliceHeader)(unsafe.Pointer(&b))

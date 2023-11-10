@@ -6,23 +6,6 @@ import (
 	"github.com/byteweap/pkg/logs"
 )
 
-//// SafeGo go函数(可捕获异常)
-//func SafeGo(fn func()) {
-//	go func() {
-//		defer func() {
-//			if err := recover(); err != nil {
-//				trace := make([]byte, 1<<16)
-//				n := runtime.Stack(trace, true)
-//				logs.Error("SafeGo Error: %v", fmt.Errorf("panic recover\n %v\n stack trace %d bytes\n %s",
-//					err, n, trace[:n]))
-//			}
-//		}()
-//
-//		// do
-//		fn()
-//	}()
-//}
-
 // Recover panic异常堆栈信息
 func Recover() {
 	if err := recover(); err != nil {
@@ -37,7 +20,7 @@ func Recover() {
 	}
 }
 
-// SafeGo 可捕获异常的go函数
+// SafeGo executes the given function in a separate goroutine, recovering from any panics.
 func SafeGo(fn func()) {
 	go func() {
 		defer Recover()

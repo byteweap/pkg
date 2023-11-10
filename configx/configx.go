@@ -6,10 +6,13 @@ import (
 	"github.com/spf13/viper"
 )
 
-// LoadConfigFromFile 加载配置文件,并解析到结构体
-// filename: 完整文件路径 如: config/cfg.toml
-// v: 结构体指针
-// listen: 是否监听文件变化
+// LoadConfigFromFile loads the configuration from a file.
+//
+// It takes the following parameters:
+// - filename (string): the name of the file to load the configuration from.
+// - v (any): the configuration structure to populate with the loaded data.
+// - listen (bool): a flag indicating whether to listen for configuration changes.
+// It returns an error if there was a problem loading the configuration.
 func LoadConfigFromFile(filename string, v any, listen bool) error {
 	vp := viper.New()
 	if err := load(vp, filename, v); err != nil {
@@ -30,7 +33,12 @@ func LoadConfigFromFile(filename string, v any, listen bool) error {
 	return nil
 }
 
-// 加载,解析
+// load loads a configuration file into a Viper instance and unmarshals it into a provided struct.
+//
+// vp: A pointer to a Viper instance.
+// filename: The path to the configuration file.
+// v: The struct to unmarshal the configuration into.
+// error: Returns an error if the configuration file cannot be read or if unmarshaling fails.
 func load(vp *viper.Viper, filename string, v any) error {
 
 	vp.SetConfigFile(filename)
