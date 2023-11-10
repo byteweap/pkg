@@ -5,7 +5,7 @@ import (
 	"unsafe"
 )
 
-// 高性能类型转换包
+// 高性能bytes-string转换包
 
 // Bytes2String
 // converts byte slice to a string without memory allocation.

@@ -2,7 +2,7 @@ package values
 
 import (
 	"github.com/bytedance/sonic"
-	"github.com/byteweap/pkg/cast"
+	"github.com/spf13/cast"
 )
 
 // 字典类型

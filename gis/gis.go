@@ -4,7 +4,7 @@ import (
 	"math"
 
 	"github.com/bytedance/sonic"
-	"github.com/byteweap/pkg/cast"
+	"github.com/spf13/cast"
 )
 
 type Location struct {
