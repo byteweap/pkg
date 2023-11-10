@@ -7,7 +7,7 @@ import (
 func TestMapx(t *testing.T) {
 
 	km := New[string, int](false)
-	v := km.Get("foo")
+	v, _ := km.Get("foo")
 
 	t.Logf("v: %v", v)
 }

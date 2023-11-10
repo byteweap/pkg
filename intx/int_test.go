@@ -1,6 +1,11 @@
 package intx
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/bytedance/sonic"
+	"github.com/stretchr/testify/assert"
+)
 
 func TestEqual(t *testing.T) {
 
@@ -10,4 +15,15 @@ func TestEqual(t *testing.T) {
 
 	t.Logf("1-2: %v", Equal(a1, a2))
 	t.Logf("1-3: %v", Equal(a1, a3))
+}
+
+func TestSonic(t *testing.T) {
+	str := "{}"
+
+	m := make(map[string]string)
+
+	err := sonic.Unmarshal([]byte(str), m)
+	if !assert.Error(t, err) {
+		t.Log(m)
+	}
 }

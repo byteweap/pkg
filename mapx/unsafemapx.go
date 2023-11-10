@@ -8,9 +8,13 @@ func newUnSafeMapx[Key comparable, Value any]() unsafeMapx[Key, Value] {
 	return make(unsafeMapx[Key, Value])
 }
 
-// Get get value by key.
-func (m unsafeMapx[Key, Value]) Get(key Key) Value {
-	return m[key]
+// Get returns the value and a boolean indicating if the key exists in the map.
+// Returns:
+//    Value: The value associated with the key.
+//    bool: true if the key exists in the map, false otherwise.
+func (m unsafeMapx[Key, Value]) Get(key Key) (Value, bool) {
+	val, ok := m[key]
+	return val, ok
 }
 
 // Set assigns a value to the key.
@@ -42,11 +46,4 @@ func (m unsafeMapx[Key, Value]) Keys() []Key {
 		keys = append(keys, k)
 	}
 	return keys
-}
-
-// IsExist checks if the key exists in the safeMapx.
-func (m unsafeMapx[Key, Value]) IsExist(key Key) bool {
-
-	_, ok := m[key]
-	return ok
 }

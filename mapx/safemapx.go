@@ -13,11 +13,15 @@ func newSafeMapx[Key comparable, Value any]() *safeMapx[Key, Value] {
 	return &safeMapx[Key, Value]{m: make(map[Key]Value)}
 }
 
-// Get get value by key.
-func (m *safeMapx[Key, Value]) Get(key Key) Value {
+// Get returns the value and a boolean indicating if the key exists in the map.
+// Returns:
+//    Value: The value associated with the key.
+//    bool: true if the key exists in the map, false otherwise.
+func (m *safeMapx[Key, Value]) Get(key Key) (Value, bool) {
 	m.mux.RLock()
 	defer m.mux.RUnlock()
-	return m.m[key]
+	val, ok := m.m[key]
+	return val, ok
 }
 
 // Set assigns a value to the key.
