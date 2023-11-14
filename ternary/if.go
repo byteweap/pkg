@@ -1,4 +1,4 @@
-package tool
+package ternary
 
 // If 模拟三元表达式
 // desc: condition为true时，返回trueVal，否则返回falseVal
