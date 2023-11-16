@@ -31,3 +31,10 @@ func TestNewValueMapArray(t *testing.T) {
 	assert.Error(t, err)
 
 }
+
+func TestGetIntArray(t *testing.T) {
+
+	vm := ValueMap{}
+	vm["arr"] = []int{1, 2, 3}
+	t.Logf("%v", vm.GetIntArray("arr"))
+}
