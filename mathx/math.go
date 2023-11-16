@@ -1,28 +1,5 @@
 package mathx
 
-import (
-	"math/rand"
-	"time"
-)
-
-// RandInt [min, max) 随机数生成
-func RandInt(min, max int) int {
-	if min >= max || max == 0 {
-		return max
-	}
-	r := rand.New(rand.NewSource(time.Now().UnixNano()))
-	return r.Intn(max-min) + min
-}
-
-// RandInt64 [min, max) 随机数生成
-func RandInt64(min, max int64) int64 {
-	if min >= max || max == 0 {
-		return max
-	}
-	r := rand.New(rand.NewSource(time.Now().UnixNano()))
-	return r.Int63n(max-min) + min
-}
-
 // CartesianProduct 组合算法
 //（The cartesian product - 笛卡尔积算法）
 func CartesianProduct(sets [][]int) [][]int {

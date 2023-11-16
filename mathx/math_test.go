@@ -2,10 +2,6 @@ package mathx
 
 import "testing"
 
-func TestRandInt(t *testing.T) {
-	t.Log(RandInt(1000, 2000))
-}
-
 // 笛卡尔积 组合算法
 func BenchmarkCartesianProduct(b *testing.B) {
 
