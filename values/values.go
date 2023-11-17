@@ -35,26 +35,26 @@ func NewValuesFromJSON(data []byte) (ValueMap, error) {
 }
 
 // GetValueMap returns a ValueMap for the given name.
-func (vm ValueMap) GetValueMap(name string) ValueMap {
-	value := vm[name]
+func (vm ValueMap) GetValueMap(key string) ValueMap {
+	value := vm[key]
 	return cast.ToStringMap(value)
 }
 
 // GetString returns the string value associated with the given name in the ValueMap.
-func (vm ValueMap) GetString(name string) string {
-	value := vm[name]
+func (vm ValueMap) GetString(key string) string {
+	value := vm[key]
 	return cast.ToString(value)
 }
 
 // GetInt returns the integer value associated with the given name in the ValueMap.
-func (vm ValueMap) GetInt(name string) int {
-	value := vm[name]
+func (vm ValueMap) GetInt(key string) int {
+	value := vm[key]
 	return cast.ToInt(value)
 }
 
 // GetInt64 returns the int64 value associated with the given name in the ValueMap.
-func (vm ValueMap) GetInt64(name string) int64 {
-	value := vm[name]
+func (vm ValueMap) GetInt64(key string) int64 {
+	value := vm[key]
 	return cast.ToInt64(value)
 }
 
@@ -62,6 +62,12 @@ func (vm ValueMap) GetInt64(name string) int64 {
 func (vm ValueMap) GetIntArray(key string) []int {
 	value := vm[key]
 	return cast.ToIntSlice(value)
+}
+
+// GetStringArray returns an array of strings from the given key in the ValueMap.
+func (vm ValueMap) GetStringArray(key string) []string {
+	value := vm[key]
+	return cast.ToStringSlice(value)
 }
 
 // GetFloat64 returns the float64 value associated with the given name in the ValueMap.
