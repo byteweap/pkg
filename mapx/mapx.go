@@ -3,12 +3,12 @@ package mapx
 // Mapx
 // generic type map which is thread safe or not
 type Mapx[Key comparable, Value any] interface {
-	Get(key Key) (Value, bool)         // Get value by key.
-	Set(key Key, value Value)          // Set value to key.
-	Delete(key Key)                    // Delete by key.
-	Len() int                          // Get length.
-	Range(fn func(key Key, val Value)) // Range.
-	Keys() []Key                       // Get keys.
+	Get(Key) (Value, bool)     // Get value by key.
+	Set(Key, Value)            // Set value to key.
+	Delete(Key)                // Delete by key.
+	Len() int                  // Get length.
+	Range(fn func(Key, Value)) // Range.
+	Keys() []Key               // Get keys.
 }
 
 // New[Key comparable, Value any](threadSafe bool) returns a new Mapx[Key, Value] based on the value of threadSafe.
