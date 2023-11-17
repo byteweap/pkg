@@ -3,8 +3,6 @@ package util
 
 import (
 	"fmt"
-	"math/rand"
-	"time"
 )
 
 func RemoveStrElement(_array []string, _value string) []string {
@@ -22,44 +20,6 @@ func RemoveStrElement(_array []string, _value string) []string {
 		}
 	}
 	return tmpArr
-}
-
-// GetRandomNum 获取一个 count位 的随机数
-func GetRandomNum(count int) int {
-	random := rand.New(rand.NewSource(time.Now().UnixNano()))
-
-	number := 0
-	for i := 0; i < count; i++ {
-		ran := random.Intn(9) //0~9
-		if i == count-1 {
-			ran = random.Intn(8) + 1 //第一位不为0
-		}
-
-		value := ran * Power(10, i)
-		//logs.Info("value:%v", value)
-		number += value
-	}
-
-	return number
-}
-
-// GetRanExceptX 获取一个 [0,count) 的随机数
-func GetRanExceptX(count int) int {
-	random := rand.New(rand.NewSource(time.Now().UnixNano()))
-	ran := random.Intn(count) //0~9
-	return ran
-}
-
-// GetRanContainsX 获取一个 [1,count] 的随机数
-func GetRanContainsX(count int) int {
-	return GetRanExceptX(count) + 1
-}
-
-// GetRanBtween 获取一个 [0,count) 的随机数
-func GetRanBtween(_min int, _max int) int {
-	tmp := _max - _min + 1
-	num := GetRanExceptX(tmp) + _min //[0,_max-_min +1) ->[_min,_max+1)
-	return num
 }
 
 // Power 求value的 ct 次冥
