@@ -23,10 +23,6 @@ type Loggerx struct {
 	path         string    // 日志文件存放路径
 }
 
-type Event struct {
-	e *zerolog.Event
-}
-
 func Init(level, pathname string, interval int) {
 
 	switch strings.ToLower(level) {
@@ -121,78 +117,58 @@ func Custom(tag, format string, v ...interface{}) {
 
 // ----------------- 链式操作 log ------------
 
-func Debugx() *Event {
-	return event(zerolog.DebugLevel)
+func Debugx() *zerolog.Event {
+	return newEvent(zerolog.DebugLevel)
 }
 
-func Infox() *Event {
-	return event(zerolog.InfoLevel)
+func Infox() *zerolog.Event {
+	return newEvent(zerolog.InfoLevel)
 }
 
-func Errorx() *Event {
-	return event(zerolog.ErrorLevel)
+func Errorx() *zerolog.Event {
+	return newEvent(zerolog.ErrorLevel)
 }
 
-func Warnx() *Event {
-	return event(zerolog.WarnLevel)
+func Warnx() *zerolog.Event {
+	return newEvent(zerolog.WarnLevel)
 }
 
 // Fatalx Fatal消息打印 (程序终止)
-func Fatalx() *Event {
-	return event(zerolog.FatalLevel)
+func Fatalx() *zerolog.Event {
+	return newEvent(zerolog.FatalLevel)
 }
 
 // Panicx Panic消息打印 (程序不会终止)
-func Panicx() *Event {
-	return event(zerolog.PanicLevel)
+func Panicx() *zerolog.Event {
+	return newEvent(zerolog.PanicLevel)
 }
 
-func log() *Event {
-	return event(zerolog.NoLevel)
+func log() *zerolog.Event {
+	return newEvent(zerolog.NoLevel)
 }
 
-func event(level zerolog.Level) *Event {
+func newEvent(level zerolog.Level) *zerolog.Event {
 	// 1.检测logger引擎是否初始化、是否要切割
 	logger.check()
 	// 2.根据level返回Event
 	switch level {
 	case zerolog.DebugLevel:
-		return &Event{e: logger.Logger.Debug().Timestamp()}
+		return logger.Logger.Debug().Timestamp()
 	case zerolog.InfoLevel:
-		return &Event{e: logger.Logger.Info().Timestamp()}
+		return logger.Logger.Info().Timestamp()
 	case zerolog.WarnLevel:
-		return &Event{e: logger.Logger.Warn().Timestamp()}
+		return logger.Logger.Warn().Timestamp()
 	case zerolog.ErrorLevel:
-		return &Event{e: logger.Logger.Error().Timestamp()}
+		return logger.Logger.Error().Timestamp()
 	case zerolog.FatalLevel:
-		return &Event{e: logger.Logger.Fatal().Timestamp()}
+		return logger.Logger.Fatal().Timestamp()
 	case zerolog.PanicLevel:
-		return &Event{e: logger.Logger.Panic().Timestamp()}
+		return logger.Logger.Panic().Timestamp()
 	case zerolog.NoLevel:
-		return &Event{e: logger.Logger.Log().Timestamp()}
+		return logger.Logger.Log().Timestamp()
 	default:
-		return &Event{e: logger.Logger.Debug().Timestamp()}
+		return logger.Logger.Debug().Timestamp()
 	}
-}
-
-func (ev *Event) Any(key string, v any) *Event {
-	ev.e.Any(key, v)
-	return ev
-}
-
-// 此方法会打印
-func (ev *Event) Msgf(format string, v ...interface{}) {
-	ev.e.Msgf(format, v...)
-}
-
-// 此方法会打印
-func (ev *Event) Msg(msg string) {
-	ev.e.Msg(msg)
-}
-
-// 此方法会打印
-func (ev *Event) OK() {
-	ev.e.Msg("")
 }
 
 func (log *Loggerx) check() {
@@ -207,37 +183,3 @@ func (log *Loggerx) check() {
 		}
 	}
 }
-
-//func (log *Loggerx) print(level zerolog.Level, tag, format string, v ...interface{}) {
-//	//if log == nil {
-//	//	Init("debug", "", 0)
-//	//	log = logger
-//	//} else {
-//	//	// 日志文件切割
-//	//	if log.interval > 0 && time.Now().Add(-time.Hour*time.Duration(log.interval)).After(log.lastFileTime) {
-//	//		log.mux.Lock()
-//	//		Init("debug", log.path, log.interval)
-//	//		log.mux.Unlock()
-//	//		log = logger
-//	//	}
-//	//}
-//
-//	e := log.Logger
-//	switch level {
-//	case zerolog.DebugLevel:
-//		e.Debug().Timestamp().Msgf(format, v...)
-//	case zerolog.InfoLevel:
-//		e.Info().Timestamp().Msgf(format, v...)
-//	case zerolog.WarnLevel:
-//		e.Warn().Timestamp().Msgf(format, v...)
-//	case zerolog.ErrorLevel:
-//		e.Error().Timestamp().Msgf(format, v...)
-//	case zerolog.FatalLevel:
-//		e.Fatal().Timestamp().Msgf(format, v...)
-//	case zerolog.PanicLevel:
-//		e.Log().Str("Level", "Panic").Timestamp().Msgf(format, v...)
-//	case zerolog.NoLevel:
-//		e.Log().Str("Tag", tag).Timestamp().Msgf(format, v...)
-//	}
-//
-//}
