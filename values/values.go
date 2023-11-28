@@ -8,8 +8,6 @@ import (
 // 字典类型
 type ValueMap map[string]any
 
-type Value any
-
 // NewValueMapArray creates a new array of ValueMap objects from a byte array.
 //
 // It takes a byte array as input and returns an array of ValueMap objects and an error.
