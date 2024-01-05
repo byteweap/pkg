@@ -1,6 +1,8 @@
 package values
 
 import (
+	"time"
+
 	"github.com/bytedance/sonic"
 	"github.com/spf13/cast"
 )
@@ -78,6 +80,12 @@ func (vm ValueMap) GetFloat64(name string) float64 {
 func (vm ValueMap) GetBool(name string) bool {
 	value := vm[name]
 	return cast.ToBool(value)
+}
+
+// GetTime retrieves a time.Time value from the ValueMap.
+func (vm ValueMap) GetTime(name string) time.Time {
+	value := vm[name]
+	return cast.ToTime(value)
 }
 
 // ToJSON converts the ValueMap to a JSON byte slice.
