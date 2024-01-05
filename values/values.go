@@ -71,20 +71,20 @@ func (vm ValueMap) GetStringArray(key string) []string {
 }
 
 // GetFloat64 returns the float64 value associated with the given name in the ValueMap.
-func (vm ValueMap) GetFloat64(name string) float64 {
-	value := vm[name]
+func (vm ValueMap) GetFloat64(key string) float64 {
+	value := vm[key]
 	return cast.ToFloat64(value)
 }
 
 // GetBool retrieves a boolean value from the ValueMap.
-func (vm ValueMap) GetBool(name string) bool {
-	value := vm[name]
+func (vm ValueMap) GetBool(key string) bool {
+	value := vm[key]
 	return cast.ToBool(value)
 }
 
 // GetTime retrieves a time.Time value from the ValueMap.
-func (vm ValueMap) GetTime(name string) time.Time {
-	value := vm[name]
+func (vm ValueMap) GetTime(key string) time.Time {
+	value := vm[key]
 	return cast.ToTime(value)
 }
 
