@@ -29,6 +29,18 @@ func Int64(min, max int64) int64 {
 	return result.Int64() + min
 }
 
+// IsBingo 是否中奖
+// 		percent: 概率 (%)
+func IsBingo(percent int) bool {
+	return percent*100 < Int(0, 10000)
+}
+
+// IsBingo64 是否中奖
+// 		percent: 概率 (%)
+func IsBingo64(percent int64) bool {
+	return percent*100 < Int64(0, 10000)
+}
+
 // Intx [min, max) 随机数生成.
 // math/rand 生成的随机数相比crypto/rand性能更差.
 // Deprecated: use Int() instead.
