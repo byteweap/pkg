@@ -3,14 +3,17 @@ module github.com/byteweap/pkg
 go 1.18
 
 require (
+	github.com/BurntSushi/toml v1.3.2
 	github.com/bytedance/sonic v1.10.2
 	github.com/fsnotify/fsnotify v1.6.0
 	github.com/gorilla/websocket v1.5.0
+	github.com/nicksnyder/go-i18n/v2 v2.4.0
 	github.com/rs/zerolog v1.31.0
 	github.com/satori/go.uuid v1.2.0
 	github.com/spf13/cast v1.5.1
 	github.com/spf13/viper v1.17.0
 	github.com/stretchr/testify v1.8.4
+	golang.org/x/text v0.14.0
 )
 
 require (
@@ -37,7 +40,6 @@ require (
 	golang.org/x/arch v0.0.0-20210923205945-b76863e36670 // indirect
 	golang.org/x/exp v0.0.0-20230905200255-921286631fa9 // indirect
 	golang.org/x/sys v0.12.0 // indirect
-	golang.org/x/text v0.13.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
