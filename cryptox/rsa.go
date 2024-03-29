@@ -11,7 +11,7 @@ import (
 	"github.com/byteweap/pkg/convert"
 )
 
-// 加密
+// EncryptRSA 加密
 func EncryptRSA(publicKey, data string) (string, error) {
 	public := convert.String2Bytes(publicKey)
 	plaintext := convert.String2Bytes(data)
@@ -35,7 +35,7 @@ func EncryptRSA(publicKey, data string) (string, error) {
 	return base64.StdEncoding.EncodeToString(bs), err
 }
 
-// 解密
+// DecryptRSA 解密
 func DecryptRSA(privateKey, data string) (string, error) {
 
 	crypted, err := base64.StdEncoding.DecodeString(data)

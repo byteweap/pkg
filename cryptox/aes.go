@@ -9,7 +9,7 @@ import (
 	"github.com/byteweap/pkg/convert"
 )
 
-// AES加密 - CBC模式
+// EncryptAES AES加密 - CBC模式
 func EncryptAES(key, data string) (string, error) {
 	k := convert.String2Bytes(key)
 	plaintext := convert.String2Bytes(data)
@@ -27,7 +27,7 @@ func EncryptAES(key, data string) (string, error) {
 	return base64.StdEncoding.EncodeToString(crypted), nil
 }
 
-// AES解密 - CBC模式
+// DecryptAes AES解密 - CBC模式
 func DecryptAes(key string, data string) (string, error) {
 
 	k := convert.String2Bytes(key)

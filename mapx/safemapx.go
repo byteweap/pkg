@@ -15,8 +15,9 @@ func newSafeMapx[Key comparable, Value any]() *safeMapx[Key, Value] {
 
 // Get returns the value and a boolean indicating if the key exists in the map.
 // Returns:
-//    Value: The value associated with the key.
-//    bool: true if the key exists in the map, false otherwise.
+//
+//	Value: The value associated with the key.
+//	bool: true if the key exists in the map, false otherwise.
 func (m *safeMapx[Key, Value]) Get(key Key) (Value, bool) {
 	m.mux.RLock()
 	defer m.mux.RUnlock()
@@ -65,13 +66,4 @@ func (m *safeMapx[Key, Value]) Keys() []Key {
 		keys = append(keys, k)
 	}
 	return keys
-}
-
-// IsExist checks if the key exists in the safeMapx.
-func (m *safeMapx[Key, Value]) IsExist(key Key) bool {
-	m.mux.RLock()
-	defer m.mux.RUnlock()
-
-	_, ok := m.m[key]
-	return ok
 }

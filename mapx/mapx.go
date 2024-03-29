@@ -9,9 +9,10 @@ type Mapx[Key comparable, Value any] interface {
 	Len() int                  // Get length.
 	Range(fn func(Key, Value)) // Range.
 	Keys() []Key               // Get keys.
+
 }
 
-// New[Key comparable, Value any](threadSafe bool) returns a new Mapx[Key, Value] based on the value of threadSafe.
+// New  returns a new Mapx[Key, Value] based on the value of threadSafe.
 //
 // threadSafe: a boolean indicating whether the mapx should be thread safe or not.
 // Returns: an instance of Mapx[Key, Value], either a thread safe or non-thread safe depending on the value of threadSafe.
