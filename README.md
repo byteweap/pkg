@@ -36,4 +36,11 @@ toolkit for Golang, go version >= 1.18
 go get -u github.com/byteweap/pkg
 ```
 
+## 特别鸣谢
+
+感谢<a href="https://www.jetbrains.com/" target="_blank">JetBrains</a>提供的<a href="https://jb.gg/OpenSourceSupport" target="_blank">非商业开源软件开发授权</a>,感谢对开源事业的支持。
+
+<a href="https://www.jetbrains.com/?from=kubeadm-ha" target="_blank"><img src="https://raw.githubusercontent.com/panjf2000/illustrations/master/jetbrains/jetbrains-variant-4.png" width="250" align="middle"/></a>
+
+
 ‍
