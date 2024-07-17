@@ -9,8 +9,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/byteweap/pkg/filex"
 	"github.com/rs/zerolog"
+
+	"github.com/byteweap/pkg/filex"
 )
 
 var logger *Loggerx
@@ -84,62 +85,29 @@ func newOutput(pathname string) io.Writer {
 	return os.Stdout
 }
 
-// Debug 适配旧的logs打印
-func Debug(format string, v ...interface{}) {
-	Debugx().Msgf(format, v...)
-}
-
-func Info(format string, v ...interface{}) {
-	Infox().Msgf(format, v...)
-}
-
-func Warn(format string, v ...interface{}) {
-	Warnx().Msgf(format, v...)
-}
-
-func Error(format string, v ...interface{}) {
-	Errorx().Msgf(format, v...)
-}
-
-// Fatal 打印Fatal信息 (程序终止)
-func Fatal(format string, v ...interface{}) {
-	Fatalx().Msgf(format, v...)
-}
-
-// Panic 打印Panic信息 (程序不终止)
-func Panic(format string, v ...interface{}) {
-	Panicx().Msgf(format, v...)
-}
-
-func Custom(tag, format string, v ...interface{}) {
-	log().Any("Tag", tag).Msgf(format, v...)
-}
-
-// ----------------- 链式操作 log ------------
-
-func Debugx() *zerolog.Event {
+func Debug() *zerolog.Event {
 	return newEvent(zerolog.DebugLevel)
 }
 
-func Infox() *zerolog.Event {
+func Info() *zerolog.Event {
 	return newEvent(zerolog.InfoLevel)
 }
 
-func Errorx() *zerolog.Event {
+func Error() *zerolog.Event {
 	return newEvent(zerolog.ErrorLevel)
 }
 
-func Warnx() *zerolog.Event {
+func Warn() *zerolog.Event {
 	return newEvent(zerolog.WarnLevel)
 }
 
-// Fatalx Fatal消息打印 (程序终止)
-func Fatalx() *zerolog.Event {
+// Fatal Fatal消息打印 (程序终止)
+func Fatal() *zerolog.Event {
 	return newEvent(zerolog.FatalLevel)
 }
 
-// Panicx Panic消息打印 (程序不会终止)
-func Panicx() *zerolog.Event {
+// Panic Panic消息打印 (程序不会终止)
+func Panic() *zerolog.Event {
 	return newEvent(zerolog.PanicLevel)
 }
 

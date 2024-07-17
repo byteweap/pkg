@@ -1,9 +1,10 @@
 package configx
 
 import (
-	"github.com/byteweap/pkg/logs"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
+
+	"github.com/byteweap/pkg/logs"
 )
 
 // LoadConfigFromFile loads the configuration from a file.
@@ -23,9 +24,9 @@ func LoadConfigFromFile(filename string, v any, listen bool) error {
 		vp.WatchConfig()
 		vp.OnConfigChange(func(_ fsnotify.Event) {
 			if err := load(vp, filename, v); err != nil {
-				logs.Errorx().Any("Filename", filename).Any("Error", err.Error()).Msg("--------OnConfigChange")
+				logs.Error().Any("Filename", filename).Any("Error", err.Error()).Msg("--------OnConfigChange")
 			} else {
-				logs.Infox().Any("Filename", filename).Any("Data", v).Msg("--------OnConfigChange")
+				logs.Info().Any("Filename", filename).Any("Data", v).Msg("--------OnConfigChange")
 			}
 		})
 	}

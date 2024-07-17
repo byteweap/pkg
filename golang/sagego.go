@@ -9,13 +9,13 @@ import (
 // Recover panic异常堆栈信息
 func Recover() {
 	if err := recover(); err != nil {
-		logs.Errorx().Msgf("panic recover err: %v", err)
+		logs.Error().Msgf("panic recover err: %v", err)
 		for i := 0; ; i++ {
 			_, file, line, ok := runtime.Caller(i)
 			if !ok {
 				break
 			}
-			logs.Errorx().Msgf("%s: %d", file, line)
+			logs.Error().Msgf("%s: %d", file, line)
 		}
 	}
 }

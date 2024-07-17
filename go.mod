@@ -1,13 +1,14 @@
 module github.com/byteweap/pkg
 
-go 1.18
+go 1.20
 
 require (
 	github.com/BurntSushi/toml v1.3.2
 	github.com/bytedance/sonic v1.10.2
 	github.com/fsnotify/fsnotify v1.6.0
-	github.com/gorilla/websocket v1.5.0
+	github.com/magiconair/properties v1.8.7
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
+	github.com/redis/go-redis/v9 v9.5.4
 	github.com/rs/zerolog v1.31.0
 	github.com/satori/go.uuid v1.2.0
 	github.com/spf13/cast v1.5.1
@@ -17,12 +18,13 @@ require (
 )
 
 require (
+	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20230717121745-296ad89f973d // indirect
 	github.com/chenzhuoyu/iasm v0.9.0 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
+	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/klauspost/cpuid/v2 v2.0.9 // indirect
-	github.com/magiconair/properties v1.8.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.19 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
